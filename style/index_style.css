@@ -1,0 +1,148 @@
+html{
+  height: 100%;
+  width: 100%;
+}
+*{
+  margin: 0;
+  padding: 0;
+}
+
+.navigation-box{
+  display: flex;
+  flex-direction: row;
+  width: 100%;
+  height: 50px;
+  background-color: blueviolet;
+}
+.nav-box{
+  display: flex;
+  width: 20%;
+  justify-content: center;
+  align-items: center;
+  align-content: center;
+}
+.carte-box{
+  display: flex;
+  width: 20%;
+  justify-content: center;
+  align-items: center;
+  align-content: center;
+}
+
+.wrapper{
+  padding-top: 10px;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.collapsible{
+  width: 90%;
+  overflow: hidden;
+  font-weight: 500;
+}
+
+.collapsible input{
+  display: none;
+}
+
+.collapsible-head{
+  height: 300px;
+}
+
+.collapsible label{
+  position: relative;
+  font-weight: 600;
+  background-color: aliceblue;
+  box-shadow: 0 5px 11px 0 rgba(0, 0, 0, .1), 0 4px 11px 0 rgba(0, 0, 0, .08);
+  color: blue;
+  display: block;
+  margin-bottom: 10px;
+  cursor: pointer;
+  padding: 15px;
+  border-radius: 4px;
+  z-index: 1;
+  height: 50px;
+}
+
+.collapsible label:after{
+  content: " ";
+  position: absolute;
+  right: 15px;
+  top: 20px;
+  width: 18px;
+  height: 18px;
+  background: url(arrow.png) no-repeat 0 0;
+  transition: all 0.3s ease;
+}
+
+.collapsible input:checked + label::after{
+  transform: rotate(90deg);
+}
+
+
+.collapsible-text{
+  max-height: 1px;
+  overflow: hidden;
+  border-radius: 4px;
+  line-height: 1.4;
+  position: relative;
+  top: -100%;
+  opacity: 0.5;
+  transition: all 0.3s ease;
+}
+
+.collapsible input:checked ~ .collapsible-text{
+  max-height: 300px;
+  padding-bottom: 25px;
+  background-color: violet;
+  box-shadow:  0 5px 11px 0 rgba(0, 0, 0, .1), 0 4px 11px 0 rgba(0, 0, 0, .08);
+  opacity: 1;
+  top: 0;
+}
+
+.collapsible-text h2{
+  margin-bottom: 10px;
+  padding: 15px 15px 0;
+  color: chartreuse;
+}
+
+.collapsible-text p{
+  padding-left: 15px;
+  padding-right: 15px;
+}
+
+ .grid-box{
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  padding: 10px;
+  background-color: aqua;
+ }
+
+ .formation-box{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: 10px;
+  margin: 10px;
+  background-color: wheat;
+  border: solid 1px black;
+  border-radius: 10px;
+ }
+
+ .formation-box-haut{
+  display: flex;
+  background-color: yellow;
+ }
+ 
+ .formation-box-main{
+  display: flex;
+  background-color: blue;
+ }
+
+
+ .map-box{
+  padding-top: 20px;
+  padding-bottom: 10px;
+ }
