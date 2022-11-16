@@ -17,9 +17,6 @@
 
 <div class="container"><h1>ta mere </h1></div>
 
-<?php
-
-?>
 
 
 </main>
