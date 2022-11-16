@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>JSON Test</title>
+</head>
+
+<body>
+    <header></header>
+    <script>
+
+//fonction main appel avec call json
+    async function populate() {
+        const requestURL = "données/db_traitée.json";
+        const request = new Request(requestURL);
+
+        const response = await fetch(request);
+        const obj = await response.json();
+
+        populateHeader(obj);
+    }
+
+//affichage des headers
+    function populateHeader(obj) {
+        const header = document.querySelector("header");
+
+        for (var i = 0; i < obj.length; i++) {
+
+
+            // h1 : localisation
+            var myH1 = document.createElement("h1");
+            myH1.textContent = obj[i].localisation;
+            header.appendChild(myH1);
+
+
+            // h2: nom
+            var myH2 = document.createElement("h2");
+            myH2.textContent = obj[i].nom;
+            header.appendChild(myH2);
+
+            // h3: formation
+            var myH3 = document.createElement("h3");
+            myH3.textContent = obj[i].formation;
+            header.appendChild(myH3);
+
+            // p: contenu formation
+            var myP = document.createElement("p");
+            myP.textContent = obj[i].description.contenu;
+            header.appendChild(myP);
+
+
+        }
+    }
+    populate();
+    </script>
+</body>
+</html>
