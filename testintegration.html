@@ -1,58 +1,359 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>JSON Test</title>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style/index_style.css">
+    <title>Document</title>
 </head>
 
 <body>
-    <header></header>
+    <div class="navigation-box">
+        <div class="nav-box">Premiere box </div>
+        <div class="nav-box">Deuxieme box</div>
+        <div class="nav-box">Troisieme box</div>
+        <div class="nav-box">quatrièeme box</div>
+        <div class="carte-box">Logo carte</div>
+    </div>
+
+    <!-- Faire une boucle basé sur le nombre de destination -->
+    <!-- C'est le boc qui gère les menu rollup -->
+    <div class='container'>
+        <div class="wrapper">
+            <div class="collapsible-n">
+                <input type="checkbox" id="collapsible-head">
+                <label for="collapsible-head" class="collapsible-head">Le menu s'enroule seul</label>
+                <div class="collapsible-text">
+                    <h2>Liste des formations</h2>
+                    <div class="grid-box">
+                        <!-- faire une boucle foreach basé sur les formations dispo -->
+                        <div class="formation-box">
+                            <div class="haut">Titre de la formation</div>
+                            <div class="main">Texte de la formation</div>
+                            <div class="button">C'est le boutton </div>
+                        </div>
+                        <div class="formation-box">
+                            <div class="haut">Titre de la formation</div>
+                            <div class="main">Texte de la formation</div>
+                            <div class="button">C'est le boutton </div>
+                        </div>
+                        <div class="formation-box">
+                            <div class="haut">Titre de la formation</div>
+                            <div class="main">Texte de la formation</div>
+                            <div class="button">C'est le boutton </div>
+                        </div>
+                        <div class="formation-box">
+                            <div class="haut">Titre de la formation</div>
+                            <div class="main">Texte de la formation</div>
+                            <div class="button">C'est le boutton </div>
+                        </div>
+                        <div class="formation-box">
+                            <div class="haut">Titre de la formation</div>
+                            <div class="main">Texte de la formation</div>
+                            <div class="button">C'est le boutton </div>
+                        </div>
+                        <div class="formation-box">
+                            <div class="haut">Titre de la formation</div>
+                            <div class="main">Texte de la formation</div>
+                            <div class="button">C'est le boutton </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
     <script>
+        //fonction main appel avec call json
+        async function populate() {
+            const requestURL = "données/db_traitée.json";
+            const request = new Request(requestURL);
 
-//fonction main appel avec call json
-    async function populate() {
-        const requestURL = "données/db_traitée.json";
-        const request = new Request(requestURL);
+            const response = await fetch(request);
+            const obj = await response.json();
 
-        const response = await fetch(request);
-        const obj = await response.json();
-
-        populateHeader(obj);
-    }
-
-//affichage des headers
-    function populateHeader(obj) {
-        const header = document.querySelector("header");
-
-        for (var i = 0; i < obj.length; i++) {
-
-
-            // h1 : localisation
-            var myH1 = document.createElement("h1");
-            myH1.textContent = obj[i].localisation;
-            header.appendChild(myH1);
-
-
-            // h2: nom
-            var myH2 = document.createElement("h2");
-            myH2.textContent = obj[i].nom;
-            header.appendChild(myH2);
-
-            // h3: formation
-            var myH3 = document.createElement("h3");
-            myH3.textContent = obj[i].formation;
-            header.appendChild(myH3);
-
-            // p: contenu formation
-            var myP = document.createElement("p");
-            myP.textContent = obj[i].description.contenu;
-            header.appendChild(myP);
-
-
+            populateHeader(obj);
         }
-    }
-    populate();
+
+        //affichage des headers
+        function populateHeader(obj) {
+            const main = document.querySelector(".container");
+            const national = []
+            const toulouse = []
+            const boulogne = []
+            const rennesnantes = []
+            const rennes = []
+            const france = []
+            const berna = []
+            const versaille = []
+            const defense = []
+            const saintbart = []
+            const rouen = []
+            const anglet = []
+            const bdx = []
+            const lille = []
+            const rochelle = []
+            const evry = []
+            const albi = []
+            const montpellier = []
+            const ales = []
+            const sainte = []
+            const nantes = []
+            const levallois = []
+            const mulhouse = []
+            const pontoise = []
+            const malo = []
+            const montluc = []
+            const morlaix = []
+            const putaux = []
+
+            var loc = ['National', 'Toulouse', 'Boulogne-Billancourt', 'Rennes et Nantes', 'Rennes', 'France', 'La Bernardière', 'versailles', 'Putaux-La-Défense', "Saint-Barthélémy d'Anjou", 'Rouen', 'Anglet',
+                'Bordeaux', 'Lille', 'La Rochelle', 'Evry', 'Albi', 'Montpellier',
+                'Ales', 'Saint-Étienne', 'Nantes', 'Levallois', 'Mulhouse', 'Pontoise', 'SAINT MALO', 'Montluc', 'Morlaix', 'Putaux'
+            ]
+
+            for (var i = 0; i < obj.length; i++) {
+
+                if (obj[i].localisation == "National") {
+                    national.push(i)
+                }
+
+                if (obj[i].localisation == "Toulouse") {
+                    toulouse.push(i)
+                }
+
+                if (obj[i].localisation == "Boulogne-Billancourt") {
+                    boulogne.push(i)
+                }
+
+                if (obj[i].localisation == "Rennes" | "Nantes") {
+                    rennesnantes.push(i)
+                }
+
+                if (obj[i].localisation == "Rennes") {
+                    rennes.push(i)
+                }
+
+                if (obj[i].localisation == "Toute la France") {
+                    france.push(i)
+                }
+
+                if (obj[i].localisation == "La Bernardière") {
+                    berna.push(i)
+                }
+
+                if (obj[i].localisation == "Versailles") {
+                    versaille.push(i)
+                }
+
+                if (obj[i].localisation == "Puteaux-La défense") {
+                    putaux.push(i)
+                }
+
+                if (obj[i].localisation == "Saint-Barthélemy d'Anjou") {
+                    saintbart.push(i)
+                }
+
+                if (obj[i].localisation == "Rouen") {
+                    rouen.push(i)
+                }
+
+                if (obj[i].localisation == "Anglet") {
+                    anglet.push(i)
+                }
+
+                if (obj[i].localisation == "Bordeaux") {
+                    bdx.push(i)
+                }
+
+                if (obj[i].localisation == "Lille") {
+                    lille.push(i)
+                }
+
+                if (obj[i].localisation == "La Rochelle") {
+                    rochelle.push(i)
+                }
+
+                if (obj[i].localisation == "Évry") {
+                    evry.push(i)
+                }
+
+                if (obj[i].localisation == "Albi") {
+                    albi.push(i)
+                }
+
+                if (obj[i].localisation == "Montpellier") {
+                    montpellier.push(i)
+                }
+
+                if (obj[i].localisation == "Ales") {
+                    ales.push(i)
+                }
+
+                if (obj[i].localisation == "Saint-Étienne") {
+                    sainte.push(i)
+                }
+
+                if (obj[i].localisation == "Nantes") {
+                    nantes.push(i)
+                }
+
+                if (obj[i].localisation == "Levallois-Perret") {
+                    levallois.push(i)
+                }
+
+                if (obj[i].localisation == "Mulhouse") {
+                    mulhouse.push(i)
+                }
+
+                if (obj[i].localisation == "Pontoise") {
+                    pontoise.push(i)
+                }
+
+                if (obj[i].localisation == "SAINT MALO") {
+                    malo.push(i)
+                }
+
+                if (obj[i].localisation == "Saint-Etienne-de-Montluc") {
+                    montluc.push(i)
+                }
+
+                if (obj[i].localisation == "Morlaix") {
+                    morlaix.push(i)
+                }
+
+                if (obj[i].localisation == "Putaux") {
+                    putaux.push(i)
+                }
+            }
+            var all = [national, toulouse, boulogne, rennesnantes, rennes, france, berna, versaille, defense, saintbart, rouen, anglet, bdx, lille, rochelle, evry, albi, montpellier,
+                ales, sainte, nantes, levallois, mulhouse, pontoise, malo, montluc, morlaix, putaux
+            ]
+
+            console.log(all)
+                //TODO : trier les formations par ville grace aux listes
+
+            for (var j = 0; j < all.length; j++) {
+                //création classe wrapper
+                var newDiv = document.createElement("div");
+
+                newDiv.className = "wrapper" + j;
+
+                //création classe collapsible
+                var newDivCol = document.createElement("div");
+                newDivCol.className = "collapsible-n" + j;
+
+
+                //création input check
+                var newDivCheck = document.createElement("input");
+                newDivCheck.type = "checkbox";
+                newDivCheck.id = "collapsible-head" + j;
+
+                //création label
+                var newLabCol = document.createElement("label");
+                newLabCol.htmlFor = "collapsible-head" + j;
+                newLabCol.className = "collapsible-head" + j;
+                newLabCol.textContent = loc[j];
+
+
+                //déclaration de mes query
+
+
+                var fragment = document.createDocumentFragment();
+                var div = fragment
+                    .appendChild(newDiv)
+                    .appendChild(newDivCol)
+                    .appendChild(newDivCheck)
+                    .after(newLabCol)
+
+                //appel de mes DOM
+
+                main.appendChild(fragment)
+
+                var collapse = document.querySelector("[class= collapsible-n" + CSS.escape(j) + "]");
+
+
+
+                //création classe collapsible text
+                var newDivColtxt = document.createElement("div");
+                newDivColtxt.className = "collapsible-text" + j;
+
+                var myH2 = document.createElement("h2");
+                myH2.textContent = "Liste des formations";
+
+
+
+                var newDivGrid = document.createElement("div");
+                newDivGrid.className = "grid-box" + j;
+
+                var fragment = document.createDocumentFragment();
+                var div = fragment
+                    .appendChild(newDivColtxt)
+                    .appendChild(newDivGrid)
+                    .before(myH2)
+
+
+                collapse.appendChild(fragment)
+
+                function findDim(a){
+                    var mainLen = 0;
+                    var subLen = 0;
+
+                    mainLen = a.length;
+
+                    for(var i=0; i < mainLen; i++){
+                        var len = a[j].length;
+                        subLen = (len > subLen ? len : subLen);
+                    }
+                    var dims = [mainLen, subLen];
+                    return subLen
+                };
+
+                var subLen = findDim(all)
+                console.log(subLen)
+
+                for (var n = 0; n < subLen; n++) {
+
+
+                    var gridb = document.querySelector("[class=grid-box" + CSS.escape(j) + "]");
+
+                    var newDivFormB = document.createElement("div");
+                    newDivFormB.className = "formation-box" + j + n;
+
+                    gridb.appendChild(newDivFormB);
+
+                    var finb = document.querySelector("[class= formation-box" + CSS.escape(j) + CSS.escape(n) + "]");
+
+                    var newDivFormH = document.createElement("div");
+                    newDivFormH.className = "haut" + j + n;
+                    newDivFormH.textContent = obj[n].formation;
+
+                    var newDivFormM = document.createElement("div");
+                    newDivFormM.className = "main" + j + n;
+                    newDivFormM.textContent = "obj[all[i]].description.contenu";
+
+
+                    var newDivFormB = document.createElement("div");
+                    newDivFormB.className = "button" + j + n;
+                    newDivFormB.textContent = "Bouton";
+
+                    finb.appendChild(newDivFormH)
+                    finb.appendChild(newDivFormM)
+                    finb.appendChild(newDivFormB)
+                }
+            }
+        }
+        populate();
     </script>
+    </div>
+
+    <div class="map-box">
+        <h1>ICI C'EST LA CARTE</h1>
+    </div>
+
+
+
 </body>
+
 </html>

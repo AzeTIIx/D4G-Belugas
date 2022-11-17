@@ -29,21 +29,22 @@ html{
   align-content: center;
 }
 
-.wrapper{
+div[class^='wrapper'], div[class*=' wrapper']{
   padding-top: 10px;
   width: 100%;
   display: flex;
   align-items: center;
   justify-content: center;
+  flex-direction: column;
 }
 
-.collapsible{
+div[class*='-n']{
   width: 90%;
   overflow: hidden;
   font-weight: 500;
 }
 
-.collapsible input{
+div[class*='-n'] input{
   display: none;
 }
 
@@ -51,7 +52,7 @@ html{
   height: 300px;
 }
 
-.collapsible label{
+div[class*='-n'] label{
   position: relative;
   font-weight: 600;
   background-color: aliceblue;
@@ -66,7 +67,7 @@ html{
   height: 50px;
 }
 
-.collapsible label:after{
+div[class*='-n'] label:after{
   content: " ";
   position: absolute;
   right: 15px;
@@ -77,12 +78,12 @@ html{
   transition: all 0.3s ease;
 }
 
-.collapsible input:checked + label::after{
+div[class*='-n'] input:checked + label::after{
   transform: rotate(90deg);
 }
 
 
-.collapsible-text{
+div[class*='collapsible-text']{
   max-height: 1px;
   overflow: hidden;
   border-radius: 4px;
@@ -93,7 +94,7 @@ html{
   transition: all 0.3s ease;
 }
 
-.collapsible input:checked ~ .collapsible-text{
+div[class*='-n'] input:checked ~ div[class*='collapsible-text']{
   max-height: 300px;
   padding-bottom: 25px;
   background-color: violet;
@@ -102,25 +103,25 @@ html{
   top: 0;
 }
 
-.collapsible-text h2{
+div[class*='collapsible-text'] div[class*='h2'] {
   margin-bottom: 10px;
   padding: 15px 15px 0;
   color: chartreuse;
 }
 
-.collapsible-text p{
+div[class*='collapsible-text'] p{
   padding-left: 15px;
   padding-right: 15px;
 }
 
- .grid-box{
+div[class*='grid-box']{
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   padding: 10px;
   background-color: aqua;
  }
 
- .formation-box{
+ div[class*='collapsible-text'] div[class*='formation-box'] {
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -131,12 +132,12 @@ html{
   border-radius: 10px;
  }
 
- .formation-box-haut{
+ div[class*='haut']{
   display: flex;
   background-color: yellow;
  }
  
- .formation-box-main{
+ div[class*='main']{
   display: flex;
   background-color: blue;
  }
